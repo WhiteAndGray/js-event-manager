@@ -9,7 +9,7 @@
     "declaration": true,
     "noImplicitAny": false,
     "noResolve": true,
-    "removeComments": true,
+    "removeComments": false,
     "noLib": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true
