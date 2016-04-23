@@ -6,4 +6,5 @@ bower_components
 /dist
 build/reports
 coverage
+docs
 test/e2e/dist
