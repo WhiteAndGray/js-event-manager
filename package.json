@@ -50,10 +50,13 @@
   "jspm": {
     "registry": "jspm",
     "jspmPackage": true,
-    "main": "wg-events",
+    "main": "index",
     "format": "amd",
     "directories": {
       "lib": "dist"
+    },
+    "map": {
+      "wg-events": "index"
     },
     "devDependencies": {
       "babel": "npm:babel-core@^5.8.24",
