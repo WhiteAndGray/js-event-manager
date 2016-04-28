@@ -260,3 +260,44 @@ export class ListenerManager implements IListenerManager {
   }
 
 }
+
+export class EventManager implements IEventDispatcher, IListenerManager {
+
+  private dispatcher:EventDispatcher;
+
+  private listenerManager = new ListenerManager();
+
+  constructor(target:any) {
+    this.dispatcher = new EventDispatcher(target);
+    this.listenerManager = new ListenerManager();
+  }
+
+  addEventListener(event:string, listener:Function) {
+    this.dispatcher.addEventListener(event, listener);
+  }
+
+  on(event:string, listener:Function) {
+    this.dispatcher.on(event, listener);
+  }
+
+  removeEventListener(event:string, listener:Function) {
+    this.dispatcher.removeEventListener(event, listener);
+  }
+
+  off(event:string, listener:Function) {
+    this.dispatcher.off(event, listener);
+  }
+
+  dispatchEvent(event:string|IEvent) {
+    this.dispatcher.dispatchEvent(event);
+  }
+
+  attachEventListener(target:IEventTarget, event:string, listener:Function) {
+    this.listenerManager.attachEventListener(target, event, listener);
+  }
+
+  detachEventListeners(target?:IEventTarget, event?:string) {
+    this.listenerManager.detachEventListeners(target, event);
+  }
+
+}
