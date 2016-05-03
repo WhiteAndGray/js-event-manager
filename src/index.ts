@@ -300,4 +300,11 @@ export class EventManager implements IEventDispatcher, IListenerManager {
     this.listenerManager.detachEventListeners(target, event);
   }
 
+  forwardEvents(target:IEventDispatcher, events:string[]) {
+    events.forEach(eventName => {
+      this.attachEventListener(target, eventName, event => {
+        this.dispatchEvent(Object.assign({}, event));
+      });
+    });
+  }
 }
