@@ -1,4 +1,4 @@
-import {EventDispatcher, ListenerManager} from "../../src/index";
+import {EventDispatcher, ListenerManager, EventManager, IEvent} from "../../src/index";
 
 describe('EventDispatcher', () => {
 
@@ -148,5 +148,22 @@ describe('ListenerManager', () => {
     document.dispatchEvent(event);
 
     expect(called).toBeTruthy();
+  });
+});
+
+describe('EventManager', () => {
+  it('forwards events', () => {
+    var target = {};
+    let em = new EventManager(target);
+
+    let originalDispatcher = new EventDispatcher();
+
+    em.forwardEvents(originalDispatcher, ['foo-event']);
+
+    let event:IEvent = undefined;
+    em.on('foo-event', (e) => event = e);
+    originalDispatcher.dispatchEvent('foo-event');
+
+    expect(event.target).toEqual(target);
   });
 });
