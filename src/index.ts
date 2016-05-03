@@ -37,28 +37,28 @@ export interface IEventDispatcher {
    * @param event The event to listen to
    * @param listener The listener to call when the event is dispatched
    */
-  addEventListener(event:string, listener:Function);
+  addEventListener?(event:string, listener:Function);
   
   /**
    * An alias for [[IEventDispatcher.addEventListener]]
    * @param event
    * @param listener
    */
-  on(event:string, listener:Function);
+  on?(event:string, listener:Function);
   
   /**
    * Removes the event listener for the indicated event
    * @param event The event for which the listener was added
    * @param listener The listener to remove
    */
-  removeEventListener(event:string, listener:Function);
+  removeEventListener?(event:string, listener:Function);
   
   /**
    * An alias for [[IEventDispatcher.removeEventListener]]
    * @param event
    * @param listener
    */
-  off(event:string, listener:Function);
+  off?(event:string, listener:Function);
   
   /**
    * Dispatches the indicated event, initiating a dispatch loop where each
@@ -68,7 +68,7 @@ export interface IEventDispatcher {
    * true
    * @param event
    */
-  dispatchEvent(event:string|IEvent);
+  dispatchEvent?(event:string|IEvent);
 
 }
 
@@ -87,7 +87,7 @@ export interface IListenerManager {
    * @param event
    * @param listener
    */
-  attachEventListener(target:IEventTarget, event:string, listener:Function);
+  attachEventListener?(target:IEventTarget, event:string, listener:Function);
   
   /**
    * Detaches the listeners for the indicated target and the indicated event.
@@ -97,7 +97,7 @@ export interface IListenerManager {
    * @param target
    * @param event
    */
-  detachEventListeners(target?:IEventTarget, event?:string);
+  detachEventListeners?(target?:IEventTarget, event?:string);
 
 }
 
